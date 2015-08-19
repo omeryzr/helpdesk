@@ -9,11 +9,12 @@ class Member(models.Model):
     password = models.CharField(max_length=50)
     email = models.CharField(max_length=50, unique=True)
     url = models.URLField()
-    twitter = models.URLField()
-    github = models.URLField()
-    facebook = models.URLField()
+    twitter = models.URLField(blank=True)
+    github = models.URLField(blank=True)
+    facebook = models.URLField(blank=True)
+    photo = models.URLField(blank=True)
 
-    def __print__(self):
+    def __str__(self):
             return self.username
 
 
@@ -25,22 +26,22 @@ class Ticket(models.Model):
     is_open = models.BooleanField(default=True)
     category = models.ForeignKey('TicketCategory', related_name='tickets')
 
-    def __print__(self):
+    def __str__(self):
         return self.title
 
 
-class Answers(models.Model):
+class Answer(models.Model):
     member = models.ForeignKey("Member", related_name="answers")
     content = models.TextField()
     ticket_id = models.ForeignKey("Ticket", related_name="answers")
     create_date = models.DateTimeField(auto_now_add=True)
 
-    def __print__(self):
+    def __str__(self):
         return self.member.username
 
 
 class TicketCategory(models.Model):
-    name = models.TextField(max_length=60)
+    name = models.CharField(max_length=60)
 
-    def __print__(self):
+    def __str__(self):
         return self.name
