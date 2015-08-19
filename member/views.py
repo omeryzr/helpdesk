@@ -5,7 +5,8 @@ __author__ = 'lyk-py'
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-
+from django.contrib.auth.models import User
+from member.models import Member
 
 # Create your views here.
 
@@ -14,3 +15,23 @@ def index(request):
 
 def hakkimizda(request):
     return render_to_response('hakkimizda.html',context_instance=RequestContext(request))
+
+
+def hata(request):
+    return render_to_response('404.html', context_instance=RequestContext(request))
+
+def register(request):
+    if request.method == 'POST':
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            email = request.POST.get('email')
+            member_user_auth = User.objects.create_user(username, email, password)
+            member_user_auth.save()
+            mmbr = Member(username=username, email=email, password=password)
+            mmbr.save()
+            return HttpResponseRedirect('/accounts/login/')
+        except Exception as e:
+            return HttpResponseRedirect('/accounts/login/')
+
+    return render_to_response('register.html', context_instance=RequestContext(request))

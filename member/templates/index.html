@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SupportSystem</title>
-</head>
-<body>
+{% include "header.html" %}
+{% if request.user.is_authenticated %}
+<center><h1>Anasayfaya Hoşgeldiniz</h1></center>
 
-</body>
-</html>
+    {{request.user.username}}
+{% else %}
+
+    <center><h1>Lütfen Giriş Yapın</h1></center>
+{% endif %}
+
+
+{% include "footer.html" %}

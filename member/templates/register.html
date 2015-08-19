@@ -1,0 +1,54 @@
+{% include "header.html" %}
+
+
+<div class="container" style="margin-top:150px;margin-bottom:250px;">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 well well-smcol-sm-6 col-md-offset-4 col-xs-offset-6">
+            <legend><i class="glyphicon glyphicon-globe"></i></a> Üye Ol</legend>
+            <form method="POST">
+                {% csrf_token %}
+
+
+                <input class="form-control" name="username" placeholder="Kullanıcı Adı" value="{{ username }}"
+                       type="text" required/>
+                <br>
+
+
+                <input class="form-control" name="email" placeholder="E - Posta" type="email" value="{{ email }}"
+                       required/>
+                <br>
+
+                <input type="password" class="form-control" name="password" id="password1" placeholder="New Password"
+                       value="{{ password }}" autocomplete="off">
+
+                <div class="col-xs-4 col-md-7">
+                    <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Minimum 8
+                    Karakter<br>
+                    <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Büyük Harf
+                </div>
+
+                <div class="col-xs-4 col-md-5">
+                    <span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Küçük Harf<br>
+                    <span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Sayı
+                </div>
+
+                <input type="password" class="form-control" name="password2" id="password2"
+                       placeholder="Repeat Password" autocomplete="off">
+
+                <div class="col-sm-12">
+                    <span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Passwords Match
+                </div>
+
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Tamamla
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+{% include "footer.html" %}
