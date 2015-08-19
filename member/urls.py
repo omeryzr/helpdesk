@@ -5,4 +5,5 @@ import django.contrib.auth
 
 urlpatterns = patterns('',
                        url(r'^index/$', 'member.views.index'),
+                       url(r'^hakkimizda/$', 'member.views.hakkimizda'),
                        )

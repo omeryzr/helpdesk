@@ -11,3 +11,6 @@ from django.template import RequestContext
 
 def index(request):
     return render_to_response('index.html', context_instance=RequestContext(request))
+
+def hakkimizda(request):
+    return render_to_response('hakkimizda.html',context_instance=RequestContext(request))
