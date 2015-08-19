@@ -71,6 +71,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SupportSystem.wsgi.application'
 
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join('/static')
+
+STATICFILES_DIRS = (
+    os.path.join("static"),
+)
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'member/templates'),
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
