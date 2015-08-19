@@ -1,12 +1,9 @@
 {% include "header.html" %}
 
-
 {% if request.user.is_authenticated %}
-<center><h1>Anasayfaya Hoşgeldiniz</h1></center>
 
-    {{request.user.username}}
+
 {% else %}
-
     <center><h1>Lütfen Giriş Yapın</h1></center>
 {% endif %}
 

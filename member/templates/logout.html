@@ -1,0 +1,14 @@
+{% include "header.html" %}
+
+
+{% if request.user.is_authenticated %}
+    <center><h1>Henüz Çıkış Yapılmadı</h1></center>
+
+    {{ request.user.username }}
+{% else %}
+
+    <center><h1>Güvenli Çıkış Tamamlandı Teşekkürler</h1></center>
+{% endif %}
+
+
+{% include "footer.html" %}

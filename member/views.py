@@ -20,6 +20,19 @@ def hakkimizda(request):
 def hata(request):
     return render_to_response('404.html', context_instance=RequestContext(request))
 
+
+def tickets(request):
+    return render_to_response('tickets.html', context_instance=RequestContext(request))
+
+
+def profil(request):
+    return render_to_response('profil.html', context_instance=RequestContext(request))
+
+
+def logout(request):
+    return render_to_response('logout.html', context_instance=RequestContext(request))
+
+
 def register(request):
     if request.method == 'POST':
         try:
@@ -30,8 +43,8 @@ def register(request):
             member_user_auth.save()
             mmbr = Member(username=username, email=email, password=password)
             mmbr.save()
-            return HttpResponseRedirect('/accounts/login/')
+            return HttpResponseRedirect('/login')
         except Exception as e:
-            return HttpResponseRedirect('/accounts/login/')
+            return HttpResponseRedirect('/login')
 
     return render_to_response('register.html', context_instance=RequestContext(request))

@@ -79,7 +79,7 @@ STATICFILES_DIRS = (
     os.path.join("static"),
 )
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'member/templates'),
+    os.path.join(BASE_DIR, '../member/templates'),
 )
 
 # Database

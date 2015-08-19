@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
-
+    <title>WTOP_V3</title>
     <!-- Bootstrap -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,8 +17,77 @@
     <![endif]-->
 </head>
 <body>
+<div class="clear"></div>
+        <div id="container-site" class="container">
+
+{% if request.user.is_authenticated %}
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Support System</a>
+            </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li class="#"><a href="/">Home Page</a>
+                        </li>
+                        <li><a href="/profil"><i class="glyphicon glyphicon-cog"></i> My Profil</a>
+                        </li>
+                        <li><a href="/tickets"><i class="glyphicon glyphicon-folder-plus"></i>My Ticket</a>
+                        </li>
 
 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li style="margin-top:12px;margin-right:10px;"><i class="glyphicon glyphicon-user">
+                            Hoşgeldiniz {{ request.user.username }} </i></li>
+                        <li><a href="/accounts/logout"><i class="glyphicon glyphicon-off"></i> Çıkış</a></li>
+                    </ul>
+                </div>
+
+        </div>
+
+    </div>
+
+{% else %}
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Support System</a>
+            </div>
+            <center>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/#wtopnedir">Support System Nedir</a></li>
+                        <li><a href="/#nasil">Hakkımızda</a></li>
+                        <li><a href="/#iletisim">İletişim</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="/register"><i class="glyphicon glyphicon-user"></i> Üye Ol</a>
+                        </li>
+                        <li><a href="/login"><i class="glyphicon glyphicon-circle-arrow-right"></i> Giriş
+                            Yap</a>
 
 
+                    </ul>
+
+                </div>
+
+        </div>
+    </div>
+
+
+{% endif %}
 

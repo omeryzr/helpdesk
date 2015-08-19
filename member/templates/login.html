@@ -1,6 +1,6 @@
 {% include "header.html" %}
 
-
+<div class="login-content">
 <div id='content' class='row-fluid'>
 
     <div class="col-sm-6 col-md-offset-4 text-center">
@@ -33,7 +33,7 @@
                                 <input type="hidden" name="next" value="{{ next }}"/>
 
                             {% else %}
-                                <input type="hidden" name="next" value="/index"/>
+                                <input type="hidden" name="next" value="/"/>
                             {% endif %}
                         </form>
 
@@ -43,5 +43,6 @@
         </div>
     </div>
 </div>
-<div></div>
+</div>
+
 {% include "footer.html" %}
