@@ -11,4 +11,5 @@ urlpatterns = patterns('',
                        url(r'^profil/$', 'member.views.profil'),
                        url(r'^tickets/$', 'member.views.tickets'),
                        url(r'^logout/$', 'member.views.logout'),
+                       url(r'^editprofil/$', 'member.views.editprofil'),
                        )

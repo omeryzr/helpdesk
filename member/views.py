@@ -33,6 +33,10 @@ def logout(request):
     return render_to_response('logout.html', context_instance=RequestContext(request))
 
 
+def editprofil(request):
+    return render_to_response('editprofil.html', context_instance=RequestContext(request))
+
+
 def register(request):
     if request.method == 'POST':
         try:

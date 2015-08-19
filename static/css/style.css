@@ -5,11 +5,17 @@ body{
 .clear {
     clear: both;
 }
-.site{
-
+.table-responsive .table{
+    background-color: white;
 }
 #container-site{
-    margin-top: 40px;
+    padding:10px;
+    background-color: #f9f9f9;
+    margin-top: 54px;
+}
+.profile-image{
+    float: right;
+    margin: 20px;
 }
 .navbar .container{
     margin-left: auto;
@@ -30,4 +36,7 @@ body{
     margin-right: auto;
     vertical-align: middle;
     margin-left: -40px;
+}
+.edit-profile-button{
+    float: right;
 }

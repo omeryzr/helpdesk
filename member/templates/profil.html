@@ -1,6 +1,264 @@
 {% include "header.html" %}
 
 {% if request.user.is_authenticated %}
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10"><h1>{{request.user.username}}</h1></div>
+            <div class="col-sm-2"><a href="#" class="profile-image"><img title="profile image"
+                                                                           class="img-circle img-responsive"
+                                                                           src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3"><!--left col-->
+
+                <ul class="list-group">
+
+                    <li class="list-group-item text-muted">Profile
+                        <div class="edit-profile-button">
+                            <a href="/editprofil">
+                                <button type="button" class="btn btn-primary btn-xs">Profili Düzenle</button></a>
+                        </div>
+                    </li>
+
+
+
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Giriş Tarihi</strong></span>
+                        2.13.2014
+                    </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Son Giriş</strong></span>
+                        Dün
+                    </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Gerçek İsim</strong></span>
+                        Ad Soyad
+                    </li>
+
+                </ul>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+                    <div class="panel-body"><a href="http://omeryazir.com">omeryazir.com</a></div>
+                </div>
+
+
+                <ul class="list-group">
+                    <li class="list-group-item text-muted">Aktivite Durumu <i class="fa fa-dashboard fa-1x"></i></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Cevaladığım Ticketlar</strong></span> 125
+                    </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Kapanan Ticketlar</strong></span> 37</li>
+
+                </ul>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Sosyal Medya</div>
+                    <div class="panel-body">
+                        <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
+                            class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
+                            class="fa fa-google-plus fa-2x"></i>
+                    </div>
+                </div>
+
+            </div>
+            <!--/col-3-->
+            <div class="col-sm-9">
+
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a href="#home" data-toggle="tab">Son Aktiviteler</a></li>
+                    <li><a href="#acik-ticket" data-toggle="tab">Açık Ticketlar</a></li>
+                    <li><a href="#kapanmis-ticket" data-toggle="tab">Kapanmış Ticketlar</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">
+                        <br>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1 Ticket'i cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna Deneme  isimli Ticket açtı cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili kişilere Deneme isimli Ticket açtı.</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
+                                        Ticket'i cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
+                                        Deneme isimli Ticket açtı cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
+                                        kişilere Deneme isimli Ticket açtı.</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
+                                        Ticket'i cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
+                                        Deneme isimli Ticket açtı cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
+                                        kişilere Deneme isimli Ticket açtı.</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
+                                        Ticket'i cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
+                                        Deneme isimli Ticket açtı cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
+                                        kişilere Deneme isimli Ticket açtı.</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
+                                        Ticket'i cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
+                                        Deneme isimli Ticket açtı cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
+                                        kişilere Deneme isimli Ticket açtı.</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
+                                        Ticket'i cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
+                                        Deneme isimli Ticket açtı cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
+                                        kişilere Deneme isimli Ticket açtı.</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
+                                        Ticket'i cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
+                                        Deneme isimli Ticket açtı cevaplandı</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
+                                        kişilere Deneme isimli Ticket açtı.</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!--/tab-pane-->
+                    <div class="tab-pane" id="acik-ticket">
+
+                        <h2></h2>
+
+                        <ul class="list-group">
+                            <li class="list-group-item text-muted">Inbox</li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">How to call an optional
+                                protocol method?</a> 2.13.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı hatası</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa dsadas dsa dsa dsa</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt hatasısısasdıasdasd sadsad .</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">How to call an optional
+                                protocol method?</a> 2.13.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
+                                hatası</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
+                                dsadas dsa dsa dsa</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
+                                hatasısısasdıasdasd sadsad .</a> 2.11.2014
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <!--/tab-pane
+                    <!--/tab-pane-->
+                    <div class="tab-pane" id="kapanmis-ticket">
+
+                        <h2></h2>
+
+                        <ul class="list-group">
+                            <li class="list-group-item text-muted">Inbox</li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
+                                hatasısısasdıasdasd sadsad .</a> 2.13.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
+                                hatası</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
+                                dsadas dsa dsa dsa</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
+                                hatasısısasdıasdasd sadsad .</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
+                                hatasısısasdıasdasd sadsad .</a> 2.13.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
+                                hatası</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
+                                dsadas dsa dsa dsa</a> 2.11.2014
+                            </li>
+                            <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
+                                hatasısısasdıasdasd sadsad .</a> 2.11.2014
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <!--/tab-pane-->
+
+        </div>
+        <!--/col-9-->
+    </div><!--/row-->
 
 
 {% else %}
