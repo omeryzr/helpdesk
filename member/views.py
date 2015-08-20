@@ -64,32 +64,36 @@ def profil(request):
         return HttpResponseRedirect('/404')
 
 
-def editprofile(request):
+def editprofil(request):
     try:
         if Member.objects.filter(user=request.user):
             member = Member.objects.filter(user=request.user)[0]
+            return render_to_response('editprofil.html', locals())
 
         else:
             member = Member(user=request.user)
+
     except Exception as e:
         print(e)
-        return HttpResponseRedirect('/sorry')
+        return HttpResponseRedirect('/404')
+
 
     if request.method == 'POST':
         try:
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            name = request.POST.get('name')
-            surname = request.POST.get('surname')
             email = request.POST.get('email')
             twitter = request.POST.get('twitter')
             facebook = request.POST.get('facebook')
             github = request.POST.get('github')
-            member_user_auth = User.objects.create_user(username, password, email)
-            member_user_auth.save()
-            mmbr = Member(first_name=name, surname=surname, email=email, twitter=twitter, facebook=facebook, github=github)
-            mmbr.save()
-            return HttpResponseRedirect('/login')
+            member.email = email
+            member.linkedn = github
+            member.twitter = twitter
+            member.facebook = facebook
+            request.user.save()
+            member.save()
+            return HttpResponseRedirect('/editprofil')
         except Exception as e:
-            return HttpResponseRedirect('/login')
-    return render_to_response('register.html', context_instance=RequestContext(request))
+            print(e)
+            return HttpResponseRedirect('/404')
+
+
+    return render_to_response('editprofil.html', locals(), context_instance=RequestContext(request))

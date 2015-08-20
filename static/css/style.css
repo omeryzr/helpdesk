@@ -13,7 +13,7 @@ body{
     background-color: #f9f9f9;
     margin-top: 54px;
 }
-.profile-image{
+.profile-image img{
     float: right;
     margin: 20px;
 }
@@ -37,6 +37,7 @@ body{
     vertical-align: middle;
     margin-left: -40px;
 }
+
 .edit-profile-button{
     float: right;
 }
