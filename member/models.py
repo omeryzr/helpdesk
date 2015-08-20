@@ -46,3 +46,7 @@ class TicketCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Ticket Category'
+        verbose_name_plural = 'Ticket Categories'

@@ -23,7 +23,11 @@ def hata(request):
 
 
 def tickets(request):
-    return render_to_response('tickets.html', context_instance=RequestContext(request))
+    user_details = UserDetails.objects.filter(user=request.user)[0]
+    open_tickets = Ticket.objects.filter(user=request.user).filter(is_open=True)
+    closed_tickets = Ticket.objects.filter(user=request.user).filter(is_open=False)
+
+    return render(request, "tickets.html", locals())
 
 
 def profil(request):
@@ -41,7 +45,7 @@ def register(request):
             password = request.POST.get('password')
             email = request.POST.get('email')
             django_user = User.objects.create_user(username, email, password)
-            user_detail = Member()
+            user_detail = UserDetails()
             user_detail.user = django_user
             user_detail.save()
             return HttpResponseRedirect('/login')
