@@ -46,7 +46,7 @@ def register(request):
             password = request.POST.get('password')
             email = request.POST.get('email')
             django_user = User.objects.create_user(username, email, password)
-            user_detail = Member(username=username)
+            user_detail = Member()
             user_detail.user = django_user
             user_detail.save()
             return HttpResponseRedirect('/login')
@@ -57,7 +57,7 @@ def register(request):
 
 def profil(request):
     try:
-        member = Member.objects.filter(username=request.user.username)[0]
+        member = Member.objects.filter(user=request.user)[0]
         return render_to_response('profil.html', locals())
     except Exception as e:
         print(e)
@@ -66,14 +66,15 @@ def profil(request):
 
 def editprofile(request):
     try:
-        if Member.objects.filter(username=request.user.username):
-            member = Member.objects.filter(username=request.user.username)[0]
+        if Member.objects.filter(user=request.user):
+            member = Member.objects.filter(user=request.user)[0]
 
         else:
-            member = Member(username=request.user.username)
+            member = Member(user=request.user)
     except Exception as e:
         print(e)
         return HttpResponseRedirect('/sorry')
+
     if request.method == 'POST':
         try:
             username = request.POST.get('username')
