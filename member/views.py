@@ -43,12 +43,41 @@ def register(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             email = request.POST.get('email')
-            member_user_auth = User.objects.create_user(username, email, password)
+            django_user = User.objects.create_user(username, email, password)
+            user_detail = Member()
+            user_detail.user = django_user
+            user_detail.save()
+            return HttpResponseRedirect('/login')
+        except Exception as e:
+            return HttpResponseRedirect('/login')
+    return render_to_response('register.html', context_instance=RequestContext(request))
+
+
+def editprofile(request):
+    try:
+        if Member.objects.filter(username=request.user.username):
+            member = Member.objects.filter(username=request.user.username)[0]
+
+        else:
+            member = Member(username=request.user.username)
+    except Exception as e:
+        print(e)
+        return HttpResponseRedirect('/sorry')
+    if request.method == 'POST':
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            name = request.POST.get('name')
+            surname = request.POST.get('surname')
+            email = request.POST.get('email')
+            twitter = request.POST.get('twitter')
+            facebook = request.POST.get('facebook')
+            github = request.POST.get('github')
+            member_user_auth = User.objects.create_user(username, password, email)
             member_user_auth.save()
-            mmbr = Member(username=username, email=email, password=password)
+            mmbr = Member(first_name=name, surname=surname, email=email, twitter=twitter, facebook=facebook, github=github)
             mmbr.save()
             return HttpResponseRedirect('/login')
         except Exception as e:
             return HttpResponseRedirect('/login')
-
     return render_to_response('register.html', context_instance=RequestContext(request))

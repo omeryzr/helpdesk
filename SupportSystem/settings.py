@@ -82,6 +82,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, '../member/templates'),
 )
 
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -111,3 +112,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 SITE_ID = 1
+
+AUTH_PROFILE_MODULE ='member.Member'

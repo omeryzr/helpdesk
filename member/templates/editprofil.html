@@ -17,10 +17,10 @@
                     2.13.2014
                 </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Son Giriş</strong></span>
-                    Yesterday
+                    dün
                 </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Gerçek İsim</strong></span>
-                    Joseph Doe
+                    name surname
                 </li>
 
             </ul>
@@ -57,6 +57,7 @@
 
         </div>
 <!--/col-3-->
+        {% load i18n %}
 <div class="col-sm-9">
 
     <ul class="nav nav-tabs " id="myTab">
@@ -67,80 +68,35 @@
 
 
         <div class="tab-pane active" id="settings">
-
-
             <hr>
-            <form class="form" action="##" method="post" id="registrationForm">
-                <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
 
-                    <div class="col-xs-6">
-                        <label for="first_name"><h4>İsim</h4></label>
-                        <input type="text" class="form-control" name="first_name" id="first_name"
-                               placeholder="Kullanıcı İsmi" title="enter your first name if any.">
-                    </div>
-                </div>
-                <div class="form-group">
 
-                    <div class="col-xs-6">
-                        <label for="last_name"><h4>Soyisim</h4></label>
-                        <input type="text" class="form-control" name="last_name" id="last_name"
-                               placeholder="Kullanıcı Soy İsmi" title="enter your last name if any.">
-                    </div>
-                </div>
+                <input class="form-control" name="name" placeholder="{{ member }}" value="{{ name }}"
+                       type="text" required/>
+                <br>
+                <input class="form-control" name="surname" placeholder="Kullanıcı Adı" value="{{ surname }}"
+                       type="text" required/>
+                <br>
+                <input class="form-control" name="email" placeholder="Kullanıcı Adı" value="{{ email }}"
+                       type="text" required/>
+                <br>
+                <input class="form-control" name="twitter" placeholder="E - Posta" type="email" value="{{ twitter }}"
+                       required/>
+                <br>
+                <input class="form-control" name="facebook" placeholder="Kullanıcı Adı" value="{{ facebook }}"
+                       type="text" required/>
+                <br>
+                <input class="form-control" name="github" placeholder="Kullanıcı Adı" value="{{ github }}"
+                       type="text" required/>
+                <br>
 
-                <div class="form-group">
-
-                    <div class="col-xs-6">
-                        <label for="phone"><h4>Telefon</h4></label>
-                        <input type="text" class="form-control" name="phone" id="phone"
-                               placeholder="Telefon" title="enter your phone number if any.">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-xs-6">
-                        <label for="mobile"><h4>Cep Telefonu</h4></label>
-                        <input type="text" class="form-control" name="mobile" id="mobile"
-                               placeholder="cep telefonu" title="enter your mobile number if any.">
-                    </div>
-                </div>
-                <div class="form-group">
-
-                    <div class="col-xs-6">
-                        <label for="email"><h4>E - Posta</h4></label>
-                        <input type="email" class="form-control" name="email" id="email"
-                               placeholder="kullanıcı@gmail.com" title="enter your email.">
-                    </div>
-                </div>
-                <div class="form-group">
-
-                    <div class="col-xs-6">
-                        <label for="email"><h4>Şehir</h4></label>
-                        <input type="email" class="form-control" id="location" placeholder="Şehir"
-                               title="enter a location">
-                    </div>
-                </div>
-                <div class="form-group">
-
-                    <div class="col-xs-6">
-                        <label for="password"><h4>Parola</h4></label>
-                        <input type="password" class="form-control" name="password" id="password"
-                               placeholder="parola" title="enter your password.">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-xs-12">
-                        <br>
-                        <button class="btn btn-lg btn-success" type="submit"><i
-                                class="glyphicon glyphicon-ok-sign"></i> Kaydet
-                        </button>
-                        <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>
-                            Sıfırla
-                        </button>
-                    </div>
-                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Tamamla
+                </button>
             </form>
+
         </div>
 
     </div>
@@ -151,6 +107,7 @@
 </div><!--/row-->
 
 {% else %}
+
 
 {% endif %}
 <!--/tab-content-->
