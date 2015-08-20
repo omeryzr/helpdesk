@@ -37,6 +37,8 @@ def editprofil(request):
     return render_to_response('editprofil.html', context_instance=RequestContext(request))
 
 
+
+
 def register(request):
     if request.method == 'POST':
         try:
@@ -51,6 +53,15 @@ def register(request):
         except Exception as e:
             return HttpResponseRedirect('/login')
     return render_to_response('register.html', context_instance=RequestContext(request))
+
+
+def profil(request):
+    try:
+        member = Member.objects.filter(username=request.user.username)[0]
+        return render_to_response('profil.html', locals())
+    except Exception as e:
+        print(e)
+        return HttpResponseRedirect('/404')
 
 
 def editprofile(request):
