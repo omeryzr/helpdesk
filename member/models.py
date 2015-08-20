@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import format_html
 # Create your models here.
 
 
@@ -28,7 +29,9 @@ class Ticket(models.Model):
     category = models.ForeignKey('TicketCategory', related_name='tickets')
 
     def __str__(self):
-        return self.title
+        return 'User: %s <br/> Title : %s' % (self.user.username,self.title)
+
+    __str__.allow_tags = True
 
 
 class Answer(models.Model):
