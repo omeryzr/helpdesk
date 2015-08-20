@@ -7,6 +7,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from member.models import Member
+from django.template.context_processors import csrf
 
 # Create your views here.
 
@@ -35,8 +36,6 @@ def logout(request):
 
 def editprofil(request):
     return render_to_response('editprofil.html', context_instance=RequestContext(request))
-
-
 
 
 def register(request):
@@ -68,7 +67,7 @@ def editprofil(request):
     try:
         if Member.objects.filter(user=request.user):
             member = Member.objects.filter(user=request.user)[0]
-            return render_to_response('editprofil.html', locals())
+            return render_to_response('editprofil.html', RequestContext(request, locals()))
 
         else:
             member = Member(user=request.user)
@@ -77,18 +76,14 @@ def editprofil(request):
         print(e)
         return HttpResponseRedirect('/404')
 
-
     if request.method == 'POST':
         try:
-            email = request.POST.get('email')
-            twitter = request.POST.get('twitter')
-            facebook = request.POST.get('facebook')
-            github = request.POST.get('github')
-            member.email = email
-            member.linkedn = github
-            member.twitter = twitter
-            member.facebook = facebook
-            request.user.save()
+            user = request.user
+            user.email = request.POST.get('email')
+            user.save()
+            member.github = request.POST.get('github')
+            member.twitter = request.POST.get('twitter')
+            member.facebook = request.POST.get('facebook')
             member.save()
             return HttpResponseRedirect('/editprofil')
         except Exception as e:
@@ -96,4 +91,4 @@ def editprofil(request):
             return HttpResponseRedirect('/404')
 
 
-    return render_to_response('editprofil.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('editprofil.html',RequestContext(request, locals()))
