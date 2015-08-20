@@ -1,16 +1,17 @@
 __author__ = 'lyk-py'
-from django.conf.urls import patterns, url
-from member import views
-import django.contrib.auth
+from django.conf.urls import patterns, url, include
+
+from member.views import (index, hakkimizda, register, hata, profil, tickets, logout, editprofil, newticket)
+
 
 urlpatterns = patterns('',
-                       url(r'^$', 'member.views.index'),
-                       url(r'^hakkimizda/$', 'member.views.hakkimizda'),
-                       url(r'^register/$', 'member.views.register'),
-                       url(r'^404/$', 'member.views.hata'),
-                       url(r'^profil/$', 'member.views.profil'),
-                       url(r'^tickets/$', 'member.views.tickets'),
-                       url(r'^logout/$', 'member.views.logout'),
-                       url(r'^editprofil/$', 'member.views.editprofil'),
-                       url(r'^new-ticket/$', 'member.views.newticket'),
+                       url(r'^$', index),
+                       url(r'^hakkimizda/$',hakkimizda),
+                       url(r'^register/$', register),
+                       url(r'^404/$', hata),
+                       url(r'^profil/$', profil),
+                       url(r'^tickets/$', tickets),
+                       url(r'^logout/$', logout),
+                       url(r'^editprofil/$', editprofil),
+                       url(r'^new-ticket/$', newticket),
                        )
