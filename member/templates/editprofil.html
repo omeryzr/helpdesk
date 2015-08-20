@@ -1,5 +1,6 @@
 {% include "header.html" %}
 {% if request.user.is_authenticated %}
+    {% load i18n %}
 <div class="container">
     <div class="row">
 
@@ -46,11 +47,13 @@
             </ul>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Sosyal Medya</div>
+                <div class="panel-heading">Bağlantılarım</div>
                 <div class="panel-body">
-                    <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
-                        class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
-                        class="fa fa-google-plus fa-2x"></i>
+                        <ul class="social-network social-circle">
+                        <li><a target="_blank" href="{{ member.facebook }}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="{{ member.twitter }}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a target="_blank" href="{{ member.github }}" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+                    </ul>
                 </div>
             </div>
 
@@ -68,41 +71,41 @@
 
         <div class="tab-pane active" id="settings">
             <hr>
-            <form method="POST">{% csrf_token %}
+            <form action="." method="POST">{% csrf_token %}
 
 
 
-                <input class="form-control" name="name" placeholder="{{ member.name }}" value="{{ name }}"
+                <input class="form-control" name="name" placeholder="" value="{{ member.name }}"
                        type="text" required/>
                 <br>
 
 
-                <input class="form-control" name="surname" placeholder="{{ member.name }}" type="text" value="{{ surname }}"
+                <input class="form-control" name="surname" placeholder="" type="text" value="{{ member.surname }}"
                        required/>
                 <br>
 
-                <input type="email" class="form-control" name="email" id="password1" placeholder="{{ member.user.email }}"
-                       value="{{ email }}" autocomplete="off">
+                <input type="email" class="form-control" name="email" id="password1" placeholder=""
+                       value="{{ member.user.email }}" autocomplete="off">
                 <br>
 
-                <input type="url" class="form-control" name="url" placeholder="{{ member.url}}"
-                       value="{{ url }}" autocomplete="off">
+                <input type="url" class="form-control" name="url" placeholder=""
+                       value="{{ member.url }}" autocomplete="off">
                 <br>
 
-                <input type="url" class="form-control" name="twitter"  placeholder="{{ member.twitter }}"
-                       value="{{ twitter }}" autocomplete="off">
+                <input type="url" class="form-control" name="twitter"  placeholder=""
+                       value="{{ member.twitter }}" autocomplete="off">
                 <br>
 
-                <input type="url" class="form-control" name="facebook"  placeholder="{{ member.facebook }}"
-                       value="{{ facebook }}" autocomplete="off">
+                <input type="url" class="form-control" name="facebook"  placeholder=""
+                       value="{{ member.facebook }}" autocomplete="off">
                 <br>
 
-                <input type="url" class="form-control" name="github" placeholder="{{ member.github }}"
-                       value="{{ github }}" autocomplete="off">
+                <input type="url" class="form-control" name="github" placeholder=""
+                       value="{{ member.github }}" autocomplete="off">
                 <br>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Tamamla
+                    Güncelle
                 </button>
 
             </form>

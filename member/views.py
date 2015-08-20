@@ -34,8 +34,6 @@ def logout(request):
     return render_to_response('logout.html', context_instance=RequestContext(request))
 
 
-def editprofil(request):
-    return render_to_response('editprofil.html', context_instance=RequestContext(request))
 
 
 def register(request):
@@ -64,31 +62,26 @@ def profil(request):
 
 
 def editprofil(request):
-    try:
-        if Member.objects.filter(user=request.user):
-            member = Member.objects.filter(user=request.user)[0]
-            return render_to_response('editprofil.html', RequestContext(request, locals()))
-
-        else:
-            member = Member(user=request.user)
-
-    except Exception as e:
-        print(e)
-        return HttpResponseRedirect('/404')
-
+    if Member.objects.filter(user=request.user).exists():
+        member = Member.objects.filter(user=request.user)[0]
     if request.method == 'POST':
         try:
             user = request.user
             user.email = request.POST.get('email')
             user.save()
+            member.name = request.POST.get('name')
+            member.surname = request.POST.get('surname')
+            member.url = request.POST.get('url')
             member.github = request.POST.get('github')
             member.twitter = request.POST.get('twitter')
             member.facebook = request.POST.get('facebook')
             member.save()
-            return HttpResponseRedirect('/editprofil')
+
+            return HttpResponseRedirect('/profil')
+
         except Exception as e:
             print(e)
             return HttpResponseRedirect('/404')
 
-
     return render_to_response('editprofil.html',RequestContext(request, locals()))
+
