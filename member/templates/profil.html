@@ -3,6 +3,11 @@
 {% if request.user.is_authenticated %}
     <hr>
     <div class="container">
+    <div class="yeni-ticket-button">
+        <a href="/new-ticket">
+            <button type="button" class="btn btn-primary btn-md">Yeni Ticket Aç</button>
+        </a>
+    </div>
     <div class="row">
         <div class="col-sm-2"><a href="#" class="profile-image"><img title="profile image"
                                                                      class="img-circle img-responsive"
@@ -70,13 +75,14 @@
     <div class="col-sm-9">
 
         <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#home" data-toggle="tab">Son Aktiviteler</a></li>
+            <li class="active"><a href="#son-aktiviteler" data-toggle="tab">Son Aktiviteler</a></li>
             <li><a href="#acik-ticket" data-toggle="tab">Açık Ticketlar</a></li>
             <li><a href="#kapanmis-ticket" data-toggle="tab">Kapanmış Ticketlar</a></li>
+            <li><a href="#ticket-ac" data-toggle="tab">Yeni Ticket Aç</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="home">
+            <div class="tab-pane active" id="son-aktiviteler">
                 <br>
 
                 <div class="table-responsive">
@@ -267,7 +273,46 @@
 
             </div>
             <!--/tab-pane-->
+            <!--/tab-pane-->
+            <div class="tab-pane" id="ticket-ac">
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 contact-form">
+                            <form id="contact" method="post" class="form" role="form">
+                                <div class="row">
+                                    <div class="col-xs-4 col-md-4 form-group">
+                                        <select class="form-control" name="TicketCategory">
+                                            <option value="">Muhasebe</option>
+                                            <option value="s">Satış</option>
+                                            <option value="s">Teknik Destek</option>
 
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-12 form-group">
+                                        <input class="form-control" id="title" name="title" placeholder="Ticket Başlığı" type="text"
+                                               required autofocus/>
+                                    </div>
+
+                                </div>
+                                <textarea class="form-control" id="content" name="content" placeholder="Ticket Konusu"
+                                          rows="5"></textarea>
+                                <br/>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-12 form-group">
+                                        <button class="btn btn-primary pull-right" type="submit">Oluştur</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+            </div>
+            <!--/tab-pane
         </div>
         <!--/col-9-->
     </div><!--/row-->

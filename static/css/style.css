@@ -1,5 +1,5 @@
 body{
-    background-color: #5bc0de;
+    background-color: #0590B8;
     margin-top: 10px;
 }
 .clear {
@@ -40,6 +40,9 @@ body{
 
 .edit-profile-button{
     float: right;
+}
+.yeni-ticket-button{
+    float:right;
 }
 
 /*=========================

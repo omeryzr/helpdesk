@@ -44,3 +44,22 @@ class TicketCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# def newticket(request):
+#     if Member.objects.filter(user=request.user).exists():
+#         member = Member.objects.filter(user=request.user)[0]
+#         ticket = Ticket.objects.filter(ticket_member=request.user)[0]
+#     if request.method == 'POST':
+#         try:
+#             ticket.title = request.POST.get('title')
+#             ticket.content = request.POST.get('content')
+#             ticket.ticketcategory = 1
+#             ticket.save()
+#             return HttpResponseRedirect('/profil')
+#
+#         except Exception as e:
+#             print(e)
+#             return HttpResponseRedirect('/404')
+#
+#     return render_to_response('new-ticket.html', RequestContext(request, locals()))

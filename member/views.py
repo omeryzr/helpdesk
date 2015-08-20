@@ -7,6 +7,7 @@ from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from member.models import Member
+from member.models import Ticket
 from django.template.context_processors import csrf
 
 # Create your views here.
@@ -32,8 +33,6 @@ def profil(request):
 
 def logout(request):
     return render_to_response('logout.html', context_instance=RequestContext(request))
-
-
 
 
 def register(request):
@@ -84,4 +83,26 @@ def editprofil(request):
             return HttpResponseRedirect('/404')
 
     return render_to_response('editprofil.html',RequestContext(request, locals()))
+
+
+def newticket(request):
+    if Member.objects.filter(user=request.user).exists():
+        member = Member.objects.filter(user=request.user)[0]
+    if request.method == 'POST':
+
+        try:
+            t = Ticket()
+            t.title = request.POST.get()
+            t.content = request.POST.get()
+
+
+            t.save()
+            print("a")
+            return HttpResponseRedirect('/profil')
+
+        except Exception as e:
+            print(e)
+            return HttpResponseRedirect('/404')
+
+    return render_to_response('new-ticket.html', RequestContext(request, locals()))
 

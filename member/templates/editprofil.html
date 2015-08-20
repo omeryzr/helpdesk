@@ -2,12 +2,19 @@
 {% if request.user.is_authenticated %}
     {% load i18n %}
 <div class="container">
+    <hr>
+    <div class="yeni-ticket-button">
+        <a href="/new-ticket">
+            <button type="button" class="btn btn-primary btn-md">Yeni Ticket Aç</button>
+        </a>
+    </div>
     <div class="row">
 
         <div class="col-sm-2"><a href="#" class="profile-image"><img title="profile image" class="img-circle img-responsive"
                                                                      src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-3"><!--left col-->
 
@@ -73,33 +80,32 @@
             <hr>
             <form action="." method="POST">{% csrf_token %}
 
-
-
+                <br>
+                &nbsp&nbsp İsim
                 <input class="form-control" name="name" placeholder="" value="{{ member.name }}"
                        type="text" required/>
                 <br>
-
-
+                &nbsp&nbsp Soyisim
                 <input class="form-control" name="surname" placeholder="" type="text" value="{{ member.surname }}"
                        required/>
                 <br>
-
+                &nbsp&nbsp Email
                 <input type="email" class="form-control" name="email" id="password1" placeholder=""
                        value="{{ member.user.email }}" autocomplete="off">
                 <br>
-
+                &nbsp&nbsp Url
                 <input type="url" class="form-control" name="url" placeholder=""
                        value="{{ member.url }}" autocomplete="off">
                 <br>
-
+                &nbsp&nbsp Twitter
                 <input type="url" class="form-control" name="twitter"  placeholder=""
                        value="{{ member.twitter }}" autocomplete="off">
                 <br>
-
+                &nbsp&nbsp Facebook
                 <input type="url" class="form-control" name="facebook"  placeholder=""
                        value="{{ member.facebook }}" autocomplete="off">
                 <br>
-
+                &nbsp&nbsp Github
                 <input type="url" class="form-control" name="github" placeholder=""
                        value="{{ member.github }}" autocomplete="off">
                 <br>

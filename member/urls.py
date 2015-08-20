@@ -12,4 +12,5 @@ urlpatterns = patterns('',
                        url(r'^tickets/$', 'member.views.tickets'),
                        url(r'^logout/$', 'member.views.logout'),
                        url(r'^editprofil/$', 'member.views.editprofil'),
+                       url(r'^new-ticket/$', 'member.views.newticket'),
                        )
