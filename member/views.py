@@ -6,8 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
-from member.models import Member
-from member.models import Ticket
+from member.models import UserDetails, TicketCategory, Ticket, Answer
 from django.template.context_processors import csrf
 
 # Create your views here.
@@ -53,7 +52,7 @@ def register(request):
 
 def profil(request):
     try:
-        member = Member.objects.filter(user=request.user)[0]
+        user_details = UserDetails.objects.filter(user=request.user)[0]
         return render_to_response('profil.html', locals())
     except Exception as e:
         print(e)
@@ -61,20 +60,20 @@ def profil(request):
 
 
 def editprofil(request):
-    if Member.objects.filter(user=request.user).exists():
-        member = Member.objects.filter(user=request.user)[0]
+    if UserDetails.objects.filter(user=request.user).exists():
+        user_details = UserDetails.objects.filter(user=request.user)[0]
     if request.method == 'POST':
         try:
             user = request.user
             user.email = request.POST.get('email')
+            user.first_name = request.POST.get('name')
+            user.last_name = request.POST.get('surname')
             user.save()
-            member.name = request.POST.get('name')
-            member.surname = request.POST.get('surname')
-            member.url = request.POST.get('url')
-            member.github = request.POST.get('github')
-            member.twitter = request.POST.get('twitter')
-            member.facebook = request.POST.get('facebook')
-            member.save()
+            user_details.url = request.POST.get('url')
+            user_details.github = request.POST.get('github')
+            user_details.twitter = request.POST.get('twitter')
+            user_details.facebook = request.POST.get('facebook')
+            user_details.save()
 
             return HttpResponseRedirect('/profil')
 
@@ -86,23 +85,22 @@ def editprofil(request):
 
 
 def newticket(request):
-    if Member.objects.filter(user=request.user).exists():
-        member = Member.objects.filter(user=request.user)[0]
-    if request.method == 'POST':
+    user_details = UserDetails.objects.get(user=request.user)
+    ticket_categories = TicketCategory.objects.all()
 
+    if request.method == 'POST':
         try:
             t = Ticket()
-            t.title = request.POST.get()
-            t.content = request.POST.get()
-
-
+            t.title = request.POST.get("title")
+            t.content = request.POST.get("content")
+            t.user = request.user
+            t.category = TicketCategory.objects.filter(name = request.POST.get("ticketcategory"))[0]
             t.save()
-            print("a")
             return HttpResponseRedirect('/profil')
 
+
         except Exception as e:
-            print(e)
-            return HttpResponseRedirect('/404')
+            #return HttpResponseRedirect('/404')
+            return render(request, "new-ticket.html", locals())
 
-    return render_to_response('new-ticket.html', RequestContext(request, locals()))
-
+    return render(request, "new-ticket.html", locals())

@@ -29,13 +29,13 @@
 
 
             <li class="list-group-item text-right"><span class="pull-left"><strong>Giriş Tarihi</strong></span>
-                {{ member.user.last_login.date }}
+                {{ request.user.last_login.date }}
             </li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Son Giriş</strong></span>
-                {{ member.user.last_login.time }}
+                {{ request.user.last_login.time }}
             </li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Gerçek İsim</strong></span>
-                {{ member.name }} {{ member.surname }}
+                {{ request.user.first_name }} {{ request.user.last_name }}
             </li>
 
         </ul>
@@ -48,7 +48,7 @@
 
         <ul class="list-group">
             <li class="list-group-item text-muted">Aktivite Durumu <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Cevaladığım Ticketlar</strong></span>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Cevapladığım Ticketlar</strong></span>
                 125
             </li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Kapanan Ticketlar</strong></span> 37

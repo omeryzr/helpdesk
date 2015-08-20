@@ -6,4 +6,4 @@ from member.models import *
 admin.site.register(Ticket)
 admin.site.register(TicketCategory)
 admin.site.register(Answer)
-admin.site.register(Member)
+admin.site.register(UserDetails)

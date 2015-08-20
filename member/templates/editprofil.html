@@ -21,20 +21,20 @@
             <ul class="list-group">
                 <li class="list-group-item text-muted">Profile</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Giriş Tarihi</strong></span>
-                    {{ member.user.last_login.date }}
+                    {{ request.user.last_login.date }}
                 </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Son Giriş</strong></span>
-                    {{ member.user.last_login.time}}
+                    {{ request.user.last_login.time}}
                 </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Gerçek İsim</strong></span>
-                    {{ member.name }} {{ member.surname }}
+                    {{ request.user.first_name }} {{ request.user.last_name }}
                 </li>
 
             </ul>
 
             <div class="panel panel-default">
                 <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-                <div class="panel-body"><a target="_blank" href="{{ member.url }}">{{ member.url }}</a></div>
+                <div class="panel-body"><a target="_blank" href="{{ user_details.url }}">{{ user_details.url }}</a></div>
             </div>
 
 
@@ -57,9 +57,9 @@
                 <div class="panel-heading">Bağlantılarım</div>
                 <div class="panel-body">
                         <ul class="social-network social-circle">
-                        <li><a target="_blank" href="{{ member.facebook }}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a target="_blank" href="{{ member.twitter }}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a target="_blank" href="{{ member.github }}" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" href="{{ user_details.facebook }}" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="{{ user_details.twitter }}" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a target="_blank" href="{{ ıser_details.github }}" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -82,32 +82,32 @@
 
                 <br>
                 &nbsp&nbsp İsim
-                <input class="form-control" name="name" placeholder="" value="{{ member.name }}"
+                <input class="form-control" name="name" placeholder="" value="{{ request.user.first_name }}"
                        type="text" required/>
                 <br>
                 &nbsp&nbsp Soyisim
-                <input class="form-control" name="surname" placeholder="" type="text" value="{{ member.surname }}"
+                <input class="form-control" name="surname" placeholder="" type="text" value="{{ request.user.last_name }}"
                        required/>
                 <br>
                 &nbsp&nbsp Email
                 <input type="email" class="form-control" name="email" id="password1" placeholder=""
-                       value="{{ member.user.email }}" autocomplete="off">
+                       value="{{ user_details.user.email }}" autocomplete="off">
                 <br>
                 &nbsp&nbsp Url
                 <input type="url" class="form-control" name="url" placeholder=""
-                       value="{{ member.url }}" autocomplete="off">
+                       value="{{ user_details.url }}" autocomplete="off">
                 <br>
                 &nbsp&nbsp Twitter
                 <input type="url" class="form-control" name="twitter"  placeholder=""
-                       value="{{ member.twitter }}" autocomplete="off">
+                       value="{{ user_details.twitter }}" autocomplete="off">
                 <br>
                 &nbsp&nbsp Facebook
                 <input type="url" class="form-control" name="facebook"  placeholder=""
-                       value="{{ member.facebook }}" autocomplete="off">
+                       value="{{ user_details.facebook }}" autocomplete="off">
                 <br>
                 &nbsp&nbsp Github
                 <input type="url" class="form-control" name="github" placeholder=""
-                       value="{{ member.github }}" autocomplete="off">
+                       value="{{ user_details.github }}" autocomplete="off">
                 <br>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
