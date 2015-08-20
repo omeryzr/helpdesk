@@ -46,7 +46,7 @@ def register(request):
             password = request.POST.get('password')
             email = request.POST.get('email')
             django_user = User.objects.create_user(username, email, password)
-            user_detail = Member()
+            user_detail = Member(username=username)
             user_detail.user = django_user
             user_detail.save()
             return HttpResponseRedirect('/login')

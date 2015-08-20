@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Answer',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('content', models.TextField()),
                 ('create_date', models.DateTimeField(auto_now_add=True)),
             ],
@@ -23,7 +23,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Member',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('username', models.CharField(max_length=50)),
                 ('name', models.CharField(max_length=50)),
                 ('surname', models.CharField(max_length=50)),
                 ('url', models.URLField()),
@@ -37,7 +38,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Ticket',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('title', models.CharField(max_length=255)),
                 ('content', models.TextField()),
                 ('create_date', models.DateTimeField(auto_now_add=True)),
@@ -47,28 +48,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TicketCategory',
             fields=[
-                ('id', models.AutoField(primary_key=True, auto_created=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
                 ('name', models.CharField(max_length=60)),
             ],
         ),
         migrations.AddField(
             model_name='ticket',
             name='category',
-            field=models.ForeignKey(related_name='tickets', to='member.TicketCategory'),
+            field=models.ForeignKey(to='member.TicketCategory', related_name='tickets'),
         ),
         migrations.AddField(
             model_name='ticket',
             name='ticket_member',
-            field=models.ForeignKey(related_name='tickets', to='member.Member'),
+            field=models.ForeignKey(to='member.Member', related_name='tickets'),
         ),
         migrations.AddField(
             model_name='answer',
             name='member',
-            field=models.ForeignKey(related_name='answers', to='member.Member'),
+            field=models.ForeignKey(to='member.Member', related_name='answers'),
         ),
         migrations.AddField(
             model_name='answer',
             name='ticket_id',
-            field=models.ForeignKey(related_name='answers', to='member.Ticket'),
+            field=models.ForeignKey(to='member.Ticket', related_name='answers'),
         ),
     ]
