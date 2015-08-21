@@ -125,30 +125,11 @@
 
                     <ul class="list-group">
                         <li class="list-group-item text-muted">Inbox</li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                            hatasısısasdıasdasd sadsad .</a> 2.13.2014
+
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">{{ t.title }}</a> {{ t.create_date }}
                         </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
-                            hatası</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
-                            dsadas dsa dsa dsa</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                            hatasısısasdıasdasd sadsad .</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                            hatasısısasdıasdasd sadsad .</a> 2.13.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
-                            hatası</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
-                            dsadas dsa dsa dsa</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                            hatasısısasdıasdasd sadsad .</a> 2.11.2014
-                        </li>
+
+
 
 
                     </ul>
@@ -368,32 +349,11 @@
 
             <ul class="list-group">
                 <li class="list-group-item text-muted">Inbox</li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">How to call an optional
-                    protocol method?</a> 2.13.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı hatası</a>
-                    2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa dsadas dsa
-                    dsa dsa</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt hatasısısasdıasdasd
-                    sadsad .</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">How to call an optional
-                    protocol method?</a> 2.13.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
-                    hatası</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
-                    dsadas dsa dsa dsa</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                    hatasısısasdıasdasd sadsad .</a> 2.11.2014
-                </li>
-
-
+                {% for ticket in open_tickets %}
+                    <li class="list-group-item text-right">
+                        <a href="#" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
+                    </li>
+                {% endfor %}
             </ul>
 
         </div>
@@ -405,32 +365,11 @@
 
             <ul class="list-group">
                 <li class="list-group-item text-muted">Inbox</li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                    hatasısısasdıasdasd sadsad .</a> 2.13.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
-                    hatası</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
-                    dsadas dsa dsa dsa</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                    hatasısısasdıasdasd sadsad .</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                    hatasısısasdıasdasd sadsad .</a> 2.13.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
-                    hatası</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
-                    dsadas dsa dsa dsa</a> 2.11.2014
-                </li>
-                <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                    hatasısısasdıasdasd sadsad .</a> 2.11.2014
-                </li>
-
-
+                {% for ticket in closed_tickets %}
+                    <li class="list-group-item text-right">
+                        <a href="#" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
+                    </li>
+                {% endfor %}
             </ul>
 
         </div>

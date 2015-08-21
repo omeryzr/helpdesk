@@ -60,13 +60,17 @@ def register(request):
 
 
 def profil(request):
-    try:
+    if request.user.is_authenticated():
         user_details = UserDetails.objects.filter(user=request.user)[0]
-        return render(request,'profil.html', locals())
+        open_tickets = Ticket.objects.filter(user=request.user).filter(is_open=True)
+        closed_tickets = Ticket.objects.filter(user=request.user).filter(is_open=False)
+        try:
+            user_details = UserDetails.objects.filter(user=request.user)[0]
+            return render(request,'profil.html', locals())
 
-    except Exception as e:
-        print(e)
-        return HttpResponseRedirect('/404')
+        except Exception as e:
+            print(e)
+            return HttpResponseRedirect('/404')
 
 
 def editprofil(request):
@@ -116,5 +120,14 @@ def newticket(request):
                 return render(request, "new-ticket.html", locals())
 
         return render(request, "new-ticket.html", locals())
+
+    return HttpResponseRedirect('/login')
+
+
+def ticketdetails(request):
+    if request.user.is_authenticated():
+        user_details = UserDetails.objects.get(user=request.user)
+        ticket_categories = TicketCategory.objects.all()
+        return render(request, "ticket-details.html", locals())
 
     return HttpResponseRedirect('/login')
