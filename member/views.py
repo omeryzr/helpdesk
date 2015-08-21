@@ -39,22 +39,32 @@ def ticketdetails(request, ticket_id):
     ticket_answers = Answer.objects.filter(ticket_id=ticket_id)
 
     if request.method == 'POST':
-        try:
-            answer = Answer()
-            answer.user = request.user
-            answer.content = request.POST.get('answercontent')
-            answer.ticket_id = ticket
-            answer.save()
-            #return HttpResponseRedirect('/ticket-details')
-        except Exception as e:
-            print(e)
-            return HttpResponseRedirect('/404')
+        if request.POST.get("kapat"):
+            t = ticket
+            t.is_open = False
+            t.save()
+        else:
+            try:
+                answer = Answer()
+                answer.user = request.user
+                answer.content = request.POST.get('answercontent')
+                answer.ticket_id = ticket
+                answer.save()
+                #return HttpResponseRedirect('/ticket-details')
+            except Exception as e:
+                print(e)
+                return HttpResponseRedirect('/404')
 
     return render(request, "ticket-details.html", locals())
 
 
 def profil(request):
-    return render_to_response('profil.html', context_instance=RequestContext(request))
+    if request.user.is_authenticated():
+        user_tickets = Ticket.objects.all().filter(user=request.user)
+        user_answers = Answer.objects.all().filter(user=request.user)
+        return render(request, "profil.html", locals())
+
+    return HttpResponseRedirect('/login')
 
 
 def logout(request):

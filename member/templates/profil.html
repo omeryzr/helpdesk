@@ -227,116 +227,16 @@
         <div class="tab-content">
         <div class="tab-pane active" id="son-aktiviteler">
             <br>
-
             <div class="table-responsive">
                 <table class="table table-hover">
                     <tbody>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1 Ticket'i
-                            cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna Deneme
-                            isimli Ticket açtı cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili kişilere
-                            Deneme isimli Ticket açtı.</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
-                            Ticket'i cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
-                            Deneme isimli Ticket açtı cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
-                            kişilere Deneme isimli Ticket açtı.</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
-                            Ticket'i cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
-                            Deneme isimli Ticket açtı cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
-                            kişilere Deneme isimli Ticket açtı.</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
-                            Ticket'i cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
-                            Deneme isimli Ticket açtı cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
-                            kişilere Deneme isimli Ticket açtı.</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
-                            Ticket'i cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
-                            Deneme isimli Ticket açtı cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
-                            kişilere Deneme isimli Ticket açtı.</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
-                            Ticket'i cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
-                            Deneme isimli Ticket açtı cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
-                            kişilere Deneme isimli Ticket açtı.</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1
-                            Ticket'i cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna
-                            Deneme isimli Ticket açtı cevaplandı</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="pull-right fa fa-edit"></i> 5 Gün Önce, 12:20 - <a href="#">Yetkili
-                            kişilere Deneme isimli Ticket açtı.</a>
-                        </td>
-                    </tr>
-
+                    {% for ticket in user_tickets %}
+                        <tr>
+                            <td><i class="pull-right fa fa-edit"></i> {{ ticket.create_date }} -
+                                <a href="#"> {{ ticket.title }}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -351,12 +251,12 @@
                 <li class="list-group-item text-muted">Inbox</li>
                 {% for ticket in open_tickets %}
                     <li class="list-group-item text-right">
-                        <a href="#" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
+                        <a href="{% url "ticket-details" ticket.id %}" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
                     </li>
                 {% endfor %}
             </ul>
 
-        </div>
+        </div
         <!--/tab-pane
         <!--/tab-pane-->
         <div class="tab-pane" id="kapanmis-ticket">
@@ -367,7 +267,7 @@
                 <li class="list-group-item text-muted">Inbox</li>
                 {% for ticket in closed_tickets %}
                     <li class="list-group-item text-right">
-                        <a href="#" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
+                        <a href="{% url "ticket-details" ticket.id %}" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
                     </li>
                 {% endfor %}
             </ul>

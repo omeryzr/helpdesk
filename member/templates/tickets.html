@@ -109,7 +109,7 @@
             <li class="list-group-item text-muted">Inbox</li>
             {% for ticket in closed_tickets %}
                 <li class="list-group-item text-right">
-                    <a href="#" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
+                    <a href="{% url "ticket-details" ticket.id %}" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
                 </li>
             {% endfor %}
         </ul>
