@@ -3,6 +3,7 @@
 
 {% if request.user.is_authenticated %}
     {% if  request.user.is_staff %}
+        <center><h1>Ticket Havuzu</h1></center>
         <ul class="list-group">
             <li class="list-group-item text-muted">Inbox</li>
             {% for ticket in pool_tickets %}
@@ -13,12 +14,44 @@
             {% endfor %}
         </ul>
     {% else %}
-
+        <center><h1>Kullanıcı Giriş Ana Sayfamız Boşş</h1></center>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     {% endif %}
-<center><h1>Anasayfaya Hoşgeldiniz</h1></center>
 
-    {{request.user.username}}
-    {{ user_detail.name }}
+
+
 {% else %}
 
     <center><h1>Lütfen Giriş Yapın</h1></center>
