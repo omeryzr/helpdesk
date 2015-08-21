@@ -1,7 +1,7 @@
 __author__ = 'lyk-py'
 from django.conf.urls import patterns, url, include
 
-from member.views import (index, hakkimizda, register, hata, profil, tickets, logout, editprofil, newticket, ticketdetails)
+from member.views import (index, hakkimizda, register, hata, profil, tickets, logout, editprofil, newticket)
 
 
 urlpatterns = patterns('',
