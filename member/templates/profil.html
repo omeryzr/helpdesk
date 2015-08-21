@@ -74,8 +74,8 @@
         <div class="col-sm-9">
 
             <ul class="nav nav-tabs" id="myTab">
-                <li class="active"><a href="#acik-ticket" data-toggle="tab">Açık Ticketlar</a></li>
-                <li><a href="#uzerimdeki-ticket" data-toggle="tab">Üzerimdeki Ticketlar</a></li>
+                <li class="active"><a href="#acik-ticket" data-toggle="tab">Aktif Ticketlarım</a></li>
+                <li><a href="#uzerimdeki-ticket" data-toggle="tab">Sonuçlandırılmış Ticketlar</a></li>
             </ul>
 
             <div class="tab-content">
@@ -87,31 +87,13 @@
 
                     <ul class="list-group">
                         <li class="list-group-item text-muted">Inbox</li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">How to call an optional
-                            protocol method?</a> 2.13.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı hatası</a>
-                            2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa dsadas
-                            dsa
-                            dsa dsa</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt hatasısısasdıasdasd
-                            sadsad .</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">How to call an optional
-                            protocol method?</a> 2.13.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">mysqll bağlantı
-                            hatası</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">zırt hatasısad adsa
-                            dsadas dsa dsa dsa</a> 2.11.2014
-                        </li>
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
-                            hatasısısasdıasdasd sadsad .</a> 2.11.2014
-                        </li>
+                        {% for ticket in closed_tickets %}
+                            <li class="list-group-item text-right">
+                                <a href="{% url "ticket-details" ticket.id %}"
+                                   class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
+                            </li>
+                        {% endfor %}
+
 
 
                     </ul>
@@ -125,9 +107,12 @@
 
                     <ul class="list-group">
                         <li class="list-group-item text-muted">Inbox</li>
-
-                        <li class="list-group-item text-right"><a href="#" class="pull-left">{{ t.title }}</a> {{ t.create_date }}
-                        </li>
+                        {% for ticket in closed_tickets %}
+                            <li class="list-group-item text-right">
+                                <a href="{% url "ticket-details" ticket.id %}"
+                                   class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
+                            </li>
+                        {% endfor %}
 
 
 
