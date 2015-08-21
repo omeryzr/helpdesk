@@ -13,8 +13,9 @@ from django.template.context_processors import csrf
 
 
 def index(request):
-
-    return render_to_response('index.html', context_instance=RequestContext(request))
+    answered_tickets = list(set(Answer.objects.values_list("ticket_id", flat=True)))
+    pool_tickets = Ticket.objects.exclude(id__in=answered_tickets)
+    return render(request, 'index.html', locals())
 
 
 def hakkimizda(request):
@@ -57,15 +58,6 @@ def ticketdetails(request, ticket_id):
                 return HttpResponseRedirect('/404')
 
     return render(request, "ticket-details.html", locals())
-
-
-def profil(request):
-    if request.user.is_authenticated():
-        user_tickets = Ticket.objects.filter(user=request.user)
-        user_answers = Answer.objects.filter(user=request.user)
-        return render(request, "profil.html", locals())
-
-    return HttpResponseRedirect('/login')
 
 
 def logout(request):
