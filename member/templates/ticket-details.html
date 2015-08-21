@@ -48,9 +48,8 @@
 
                         <div class="timeline-footer">
                             <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-
-
-                            <a class="pull-right">{{ answer.create_date }}</a>
+                            <a class="pull-right">  Yanıtlayan: {{ answer.user.username }}</a>
+                            <a class="pull-right">{{ answer.create_date }}&nbsp|&nbsp </a>
                         </div>
                     </div>
                 </li>
@@ -68,16 +67,58 @@
 
                         <div class="timeline-footer">
                             <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                            <a class="pull-right">{{ answer.user.username }}</a>
-                            <a class="pull-right">{{ answer.create_date }}</a>
+                            <a class="pull-right"> Yanıtlayan : {{ answer.user.username }}</a>
+                            <a class="pull-right">{{ answer.create_date }}&nbsp|&nbsp </a>
                         </div>
                     </div>
                 </li>
+
             {% endif %}
         {% endfor %}
 
 
     </ul>
+        {% if request.user.is_staff %}
+            <div class="col-sm-8 contact-form pull-right">
+                <form id="contact" method="post" class="form" role="form">{% csrf_token %}
+
+
+                    <div class="row">
+                        <div class="col-xs-8 col-md-8 form-group pull-right">
+                                <textarea class="form-control" id="content" name="content" placeholder="Ticket Konusu"
+                                          rows="5"></textarea>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 form-group">
+                            <button class="btn btn-primary pull-left" type="submit">Oluştur</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        {% else %}
+            <div class="col-sm-8 contact-form">
+                <form id="contact" method="post" class="form" role="form">{% csrf_token %}
+
+
+                    <div class="row">
+                        <div class="col-xs-8 col-md-8 form-group pull-left">
+                                <textarea class="form-control" id="content" name="content" placeholder="Ticket Konusu"
+                                          rows="5"></textarea>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 form-group">
+                            <button class="btn btn-primary pull-left" type="submit">Oluştur</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
 
 
 
