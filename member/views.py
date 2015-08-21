@@ -16,6 +16,7 @@ def index(request):
 
     return render_to_response('index.html', context_instance=RequestContext(request))
 
+
 def hakkimizda(request):
     return render_to_response('hakkimizda.html',context_instance=RequestContext(request))
 
@@ -60,8 +61,8 @@ def ticketdetails(request, ticket_id):
 
 def profil(request):
     if request.user.is_authenticated():
-        user_tickets = Ticket.objects.all().filter(user=request.user)
-        user_answers = Answer.objects.all().filter(user=request.user)
+        user_tickets = Ticket.objects.filter(user=request.user)
+        user_answers = Answer.objects.filter(user=request.user)
         return render(request, "profil.html", locals())
 
     return HttpResponseRedirect('/login')
