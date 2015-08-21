@@ -25,10 +25,13 @@ def hata(request):
 
 
 def tickets(request):
-    user_details = UserDetails.objects.filter(user=request.user)[0]
-    open_tickets = Ticket.objects.filter(user=request.user).filter(is_open=True)
-    closed_tickets = Ticket.objects.filter(user=request.user).filter(is_open=False)
-    return render(request, "tickets.html", locals())
+    if request.user.is_authenticated():
+        user_details = UserDetails.objects.filter(user=request.user)[0]
+        open_tickets = Ticket.objects.filter(user=request.user).filter(is_open=True)
+        closed_tickets = Ticket.objects.filter(user=request.user).filter(is_open=False)
+        return render(request, "tickets.html", locals())
+
+    return HttpResponseRedirect('/login')
 
 
 def profil(request):
@@ -67,47 +70,51 @@ def profil(request):
 
 
 def editprofil(request):
-    if UserDetails.objects.filter(user=request.user).exists():
+    if request.user.is_authenticated():
         user_details = UserDetails.objects.filter(user=request.user)[0]
-    if request.method == 'POST':
-        try:
-            user = request.user
-            user.email = request.POST.get('email')
-            user.first_name = request.POST.get('name')
-            user.last_name = request.POST.get('surname')
-            user.save()
-            user_details.url = request.POST.get('url')
-            user_details.github = request.POST.get('github')
-            user_details.twitter = request.POST.get('twitter')
-            user_details.facebook = request.POST.get('facebook')
-            user_details.save()
+        if request.method == 'POST':
+            try:
+                user = request.user
+                user.email = request.POST.get('email')
+                user.first_name = request.POST.get('name')
+                user.last_name = request.POST.get('surname')
+                user.save()
+                user_details.url = request.POST.get('url')
+                user_details.github = request.POST.get('github')
+                user_details.twitter = request.POST.get('twitter')
+                user_details.facebook = request.POST.get('facebook')
+                user_details.save()
 
-            return HttpResponseRedirect('/profil')
+                return HttpResponseRedirect('/profil')
 
-        except Exception as e:
-            print(e)
-            return HttpResponseRedirect('/404')
+            except Exception as e:
+                print(e)
+                return HttpResponseRedirect('/404')
 
-    return render(request,'editprofil.html',locals())
+        return render(request,'editprofil.html', locals())
+    return HttpResponseRedirect('/login')
 
 
 def newticket(request):
-    user_details = UserDetails.objects.get(user=request.user)
-    ticket_categories = TicketCategory.objects.all()
+    if request.user.is_authenticated():
+        user_details = UserDetails.objects.get(user=request.user)
+        ticket_categories = TicketCategory.objects.all()
 
-    if request.method == 'POST':
-        try:
-            t = Ticket()
-            t.title = request.POST.get("title")
-            t.content = request.POST.get("content")
-            t.user = request.user
-            t.category = TicketCategory.objects.filter(name = request.POST.get("ticketcategory"))[0]
-            t.save()
-            return HttpResponseRedirect('/profil')
+        if request.method == 'POST':
+            try:
+                t = Ticket()
+                t.title = request.POST.get("title")
+                t.content = request.POST.get("content")
+                t.user = request.user
+                t.category = TicketCategory.objects.filter(name = request.POST.get("ticketcategory"))[0]
+                t.save()
+                return HttpResponseRedirect('/profil')
 
 
-        except Exception as e:
-            #return HttpResponseRedirect('/404')
-            return render(request, "new-ticket.html", locals())
+            except Exception as e:
+                #return HttpResponseRedirect('/404')
+                return render(request, "new-ticket.html", locals())
 
-    return render(request, "new-ticket.html", locals())
+        return render(request, "new-ticket.html", locals())
+
+    return HttpResponseRedirect('/login')
