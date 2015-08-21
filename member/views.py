@@ -62,7 +62,10 @@ def register(request):
 def profil(request):
     try:
         user_details = UserDetails.objects.filter(user=request.user)[0]
-        return render(request,'profil.html', locals())
+        if request.user.is_staff:
+            return render(request, 'admin-profile.html', locals())
+        else:
+            return render(request,'profil.html', locals())
 
     except Exception as e:
         print(e)

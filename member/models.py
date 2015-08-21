@@ -29,7 +29,7 @@ class Ticket(models.Model):
     category = models.ForeignKey('TicketCategory', related_name='tickets')
 
     def __str__(self):
-        return 'User: %s <br/> Title : %s' % (self.user.username,self.title)
+        return 'User: %s <br/> Title : %s' % (self.user.username, self.title)
 
     __str__.allow_tags = True
 

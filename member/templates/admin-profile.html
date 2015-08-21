@@ -3,16 +3,10 @@
 {% if request.user.is_authenticated %}
     <hr>
     <div class="container">
-    {% if not request.user.is_staff %}
-        <div class="yeni-ticket-button">
-            <a href="/new-ticket">
-                <button type="button" class="btn btn-primary btn-md">Yeni Ticket Aç</button>
-            </a>
-        </div>
-    {% endif %}
     <div class="row">
-        <div class="col-sm-2"><a href="#" class="profile-image">
-            <img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
+        <div class="col-sm-2"><a href="#" class="profile-image"><img title="profile image"
+                                                                     class="img-circle img-responsive"
+                                                                     src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
         </div>
     </div>
     <div class="row">
@@ -46,7 +40,6 @@
             <div class="panel-body"><a href="{{ user_details.url }}">{{ user_details.url }}</a></div>
         </div>
 
-
         <ul class="list-group">
             <li class="list-group-item text-muted">Aktivite Durumu <i class="fa fa-dashboard fa-1x"></i></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Cevapladığım
@@ -77,25 +70,43 @@
     <div class="col-sm-9">
 
     <ul class="nav nav-tabs" id="myTab">
-        <li class="active"><a href="#acik-ticket" data-toggle="tab">Açık Ticketlar</a></li>
-        <li><a href="#kapanmis-ticket" data-toggle="tab">Kapanmış Ticketlar</a></li>
+        <li class="active"><a href="#son-aktiviteler" data-toggle="tab">Son Aktiviteler</a></li>
+        <li><a href="#acik-ticket" data-toggle="tab">Açık Ticketlarım</a></li>
+        <li><a href="#kapanmis-ticket" data-toggle="tab">Kapanmış Ticketlarım</a></li>
     </ul>
 
     <div class="tab-content">
+    <div class="tab-pane active" id="son-aktiviteler">
+        <br>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <td><i class="pull-right fa fa-edit"></i> Bugün 09:30 - <a href="#"> Deneme1 Ticket'i
+                        cevaplandı</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><i class="pull-right fa fa-edit"></i> Dün, 16:23 - <a href="#">Ticket Havuzuna Deneme
+                        isimli Ticket açtı cevaplandı</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
     <!--/tab-pane-->
-    <div class="tab-pane active" id="acik-ticket">
+    <div class="tab-pane" id="acik-ticket">
 
         <h2></h2>
 
         <ul class="list-group">
             <li class="list-group-item text-muted">Inbox</li>
-
-            {% for ticket in open_tickets %}
-                <li class="list-group-item text-right">
-                    <a href="#" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
-                </li>
-            {% endfor %}
-
+            <li class="list-group-item text-right"><a href="#" class="pull-left">How to call an optional
+                protocol method?</a> 2.13.2014
+            </li>
         </ul>
 
     </div>
@@ -107,18 +118,15 @@
 
         <ul class="list-group">
             <li class="list-group-item text-muted">Inbox</li>
-            {% for ticket in closed_tickets %}
-                <li class="list-group-item text-right">
-                    <a href="#" class="pull-left">{{ ticket.title }}</a> {{ ticket.create_date }}
-                </li>
-            {% endfor %}
+            <li class="list-group-item text-right"><a href="#" class="pull-left">pısrt
+                hatasısısasdıasdasd sadsad .</a> 2.13.2014
+            </li>
         </ul>
 
     </div>
     <!--/tab-pane-->
     <!--/tab-pane-->
     <!--/row-->
-
 
 {% else %}
     <center><h1>Lütfen Giriş Yapın</h1></center>
