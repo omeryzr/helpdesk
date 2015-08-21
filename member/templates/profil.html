@@ -1,6 +1,11 @@
 {% include "header.html" %}
 
-{% if request.user.is_authenticated %}
+{% if  request.user.is_authenticated %}
+    {% if  request.user.is_staff %}
+        bu kullanıcı admin
+    {% else %}
+        bu kullanıcı admin değil
+    {% endif %}
     <hr>
     <div class="container">
     <div class="yeni-ticket-button">
