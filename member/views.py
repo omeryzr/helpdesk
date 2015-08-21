@@ -37,6 +37,19 @@ def tickets(request):
 def ticketdetails(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     ticket_answers = Answer.objects.filter(ticket_id=ticket_id)
+
+    if request.method == 'POST':
+        try:
+            answer = Answer()
+            answer.user = request.user
+            answer.content = request.POST.get('answercontent')
+            answer.ticket_id = ticket
+            answer.save()
+            #return HttpResponseRedirect('/ticket-details')
+        except Exception as e:
+            print(e)
+            return HttpResponseRedirect('/404')
+
     return render(request, "ticket-details.html", locals())
 
 

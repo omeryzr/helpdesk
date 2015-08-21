@@ -1,7 +1,6 @@
 {% include "header.html" %}
-
+{{ e }}
 {% if  request.user.is_authenticated %}
-
     <div class="well">
 
     <div class="row">
@@ -34,7 +33,7 @@
     </div>
     <ul class="timeline">
         {% for answer in ticket_answers %}
-            {% if  answer.user.is_staff %}
+            {% if not answer.user.is_staff %}
 
                 <li>
                     <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip"
@@ -85,7 +84,7 @@
 
                     <div class="row">
                         <div class="col-xs-8 col-md-8 form-group pull-right">
-                                <textarea class="form-control" id="content" name="content" placeholder="Ticket Konusu"
+                                <textarea class="form-control" id="answercontent" name="answercontent" placeholder="Ticket Konusu"
                                           rows="5"></textarea>
                         </div>
                     </div>
@@ -105,7 +104,7 @@
 
                     <div class="row">
                         <div class="col-xs-8 col-md-8 form-group pull-left">
-                                <textarea class="form-control" id="content" name="content" placeholder="Ticket Konusu"
+                                <textarea class="form-control" id="answercontent" name="answercontent" placeholder="Ticket Konusu"
                                           rows="5"></textarea>
                         </div>
                     </div>
@@ -119,13 +118,6 @@
                 </form>
             </div>
         {% endif %}
-
-
-
-
-
-
-
 {% else %}
     <center><h1>Lütfen Giriş Yapın</h1></center>
 {% endif %}
