@@ -1,20 +1,89 @@
 {% include "header.html" %}
 
 {% if  request.user.is_authenticated %}
-    ticket sahibi: {{ ticket.user }}
-    </br>
-    ticket title: {{ ticket.title }}
-    </br>
-    ticket content: {{ ticket.content }} : Tarih: {{ ticket.create_date }}
 
-    <ul>
+    <div class="well">
+
+    <div class="row">
+    <div class="col-sm-1">
+        <div class="thumbnail">
+            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+        </div>
+        <!-- /thumbnail -->
+    </div><!-- /col-sm-1 -->
+
+    <div class="col-sm-11">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>{{ ticket.title }}</h3>
+
+                <div class="panel-heading">
+                 <b class="text-muted pull-right">Ticket Sahibi:{{ ticket.user }} | Toplam Cevap Sayısı:{{ ticket_answers.count }}
+                     | {{ ticket.create_date }} </b>
+                </div>
+            </div>
+            <div class="panel-body">
+                {{ ticket.content }}
+            </div>
+            <!-- /panel-body -->
+        </div>
+        <!-- /panel panel-default -->
+    </div><!-- /col-sm-5 -->
+    </div>
+
+    </div>
+    <ul class="timeline">
         {% for answer in ticket_answers %}
-            <li>
-                {{ answer.create_date }}-{{ answer.content }}
-                {{ answer.user.username }}
-            </li>
+            {% if  answer.user.is_staff %}
+
+                <li>
+                    <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip"
+                                                              title="11 hours ago via Twitter" id=""></i></a></div>
+                    <div class="timeline-panel">
+
+                        <div class="timeline-body">
+                            <p>{{ answer.content }}</p>
+
+                        </div>
+
+                        <div class="timeline-footer">
+                            <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
+
+
+                            <a class="pull-right">{{ answer.create_date }}</a>
+                        </div>
+                    </div>
+                </li>
+            {% else %}
+
+                <li class="timeline-inverted">
+                    <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip"
+                                                              title="11 hours ago via Twitter" id=""></i></a></div>
+                    <div class="timeline-panel">
+
+                        <div class="timeline-body">
+                            <p>{{ answer.content }}</p>
+
+                        </div>
+
+                        <div class="timeline-footer">
+                            <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
+                            <a class="pull-right">{{ answer.user.username }}</a>
+                            <a class="pull-right">{{ answer.create_date }}</a>
+                        </div>
+                    </div>
+                </li>
+            {% endif %}
         {% endfor %}
+
+
     </ul>
+
+
+
+
+
+
 
 {% else %}
     <center><h1>Lütfen Giriş Yapın</h1></center>

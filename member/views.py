@@ -130,10 +130,3 @@ def newticket(request):
     return HttpResponseRedirect('/login')
 
 
-def ticketdetails(request):
-    if request.user.is_authenticated():
-        user_details = UserDetails.objects.get(user=request.user)
-        ticket_categories = TicketCategory.objects.all()
-        return render(request, "ticket-details.html", locals())
-
-    return HttpResponseRedirect('/login')
