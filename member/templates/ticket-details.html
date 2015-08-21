@@ -1,187 +1,20 @@
 {% include "header.html" %}
 
 {% if  request.user.is_authenticated %}
-    {% if  request.user.is_staff %}
-        <hr>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2"><a href="#" class="profile-image"><img title="profile image"
-                                                                             class="img-circle img-responsive"
-                                                                             src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3"><!--left col-->
+    ticket sahibi: {{ ticket.user }}
+    </br>
+    ticket title: {{ ticket.title }}
+    </br>
+    ticket content: {{ ticket.content }} : Tarih: {{ ticket.create_date }}
 
-                    <ul class="list-group">
-
-                        <li class="list-group-item text-muted">Profile
-                            <div class="edit-profile-button">
-                                <a href="/editprofil">
-                                    <button type="button" class="btn btn-primary btn-xs">Profili Düzenle</button>
-                                </a>
-                            </div>
-                        </li>
-
-
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Giriş
-                            Tarihi</strong></span>
-                            {{ request.user.last_login.date }}
-                        </li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Son Giriş</strong></span>
-                            {{ request.user.last_login.time }}
-                        </li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Gerçek
-                            İsim</strong></span>
-                            {{ request.user.first_name }} {{ request.user.last_name }}
-                        </li>
-
-                    </ul>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-                        <div class="panel-body"><a href="{{ user_details.url }}">{{ user_details.url }}</a></div>
-                    </div>
-
-
-                    <ul class="list-group">
-                        <li class="list-group-item text-muted">Aktivite Durumu <i class="fa fa-dashboard fa-1x"></i>
-                        </li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Cevapladığım
-                            Ticketlar</strong></span>
-                            125
-                        </li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Kapanan
-                            Ticketlar</strong></span>
-                            37
-                        </li>
-
-                    </ul>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Bağlantılarım</div>
-                        <div class="panel-body">
-                            <ul class="social-network social-circle">
-                                <li><a target="_blank" href="{{ user_details.facebook }}" class="icoFacebook"
-                                       title="Facebook"><i
-                                        class="fa fa-facebook"></i></a></li>
-                                <li><a target="_blank" href="{{ user_details.twitter }}" class="icoTwitter"
-                                       title="Twitter"><i
-                                        class="fa fa-twitter"></i></a></li>
-                                <li><a target="_blank" href="{{ user_details.github }}" class="icoGithub"
-                                       title="Github"><i
-                                        class="fa fa-github"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/col-3-->
-                <div class="col-sm-9">
-
-
-                    <!--/col-9-->
-                </div>
-                <!--/row-->
-
-                {% else %}
-                <hr>
-                <div class="container">
-                    <div class="yeni-ticket-button">
-                        <a href="/new-ticket">
-                            <button type="button" class="btn btn-primary btn-md">Yeni Ticket Aç</button>
-                        </a>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-2"><a href="#" class="profile-image"><img title="profile image"
-                                                                                     class="img-circle img-responsive"
-                                                                                     src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3"><!--left col-->
-
-                            <ul class="list-group">
-
-                                <li class="list-group-item text-muted">Profile
-                                    <div class="edit-profile-button">
-                                        <a href="/editprofil">
-                                            <button type="button" class="btn btn-primary btn-xs">Profili Düzenle
-                                            </button>
-                                        </a>
-                                    </div>
-                                </li>
-
-
-                                <li class="list-group-item text-right"><span class="pull-left"><strong>Giriş
-                                    Tarihi</strong></span>
-                                    {{ request.user.last_login.date }}
-                                </li>
-                                <li class="list-group-item text-right"><span class="pull-left"><strong>Son
-                                    Giriş</strong></span>
-                                    {{ request.user.last_login.time }}
-                                </li>
-                                <li class="list-group-item text-right"><span class="pull-left"><strong>Gerçek
-                                    İsim</strong></span>
-                                    {{ request.user.first_name }} {{ request.user.last_name }}
-                                </li>
-
-                            </ul>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-                                <div class="panel-body"><a href="{{ user_details.url }}">{{ user_details.url }}</a>
-                                </div>
-                            </div>
-
-
-                            <ul class="list-group">
-                                <li class="list-group-item text-muted">Aktivite Durumu <i
-                                        class="fa fa-dashboard fa-1x"></i></li>
-                                <li class="list-group-item text-right"><span class="pull-left"><strong>Cevapladığım
-                                    Ticketlar</strong></span>
-                                    125
-                                </li>
-                                <li class="list-group-item text-right"><span class="pull-left"><strong>Kapanan
-                                    Ticketlar</strong></span>
-                                    37
-                                </li>
-
-                            </ul>
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Bağlantılarım</div>
-                                <div class="panel-body">
-                                    <ul class="social-network social-circle">
-                                        <li><a target="_blank" href="{{ user_details.facebook }}" class="icoFacebook"
-                                               title="Facebook"><i
-                                                class="fa fa-facebook"></i></a></li>
-                                        <li><a target="_blank" href="{{ user_details.twitter }}" class="icoTwitter"
-                                               title="Twitter"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                        <li><a target="_blank" href="{{ user_details.github }}" class="icoGithub"
-                                               title="Github"><i
-                                                class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--/col-3-->
-                        <div class="col-sm-9">
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/tab-pane-->
-        <!--/tab-pane-->
-
-
-    {% endif %}
-
+    <ul>
+        {% for answer in ticket_answers %}
+            <li>
+                {{ answer.create_date }}-{{ answer.content }}
+                {{ answer.user.username }}
+            </li>
+        {% endfor %}
+    </ul>
 
 {% else %}
     <center><h1>Lütfen Giriş Yapın</h1></center>

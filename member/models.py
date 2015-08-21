@@ -29,7 +29,7 @@ class Ticket(models.Model):
     category = models.ForeignKey('TicketCategory', related_name='tickets')
 
     def __str__(self):
-        return 'User: %s <br/> Title : %s' % (self.user.username, self.title)
+        return 'Title: %s <br/> Id : %s' % (self.title, self.id)
 
     __str__.allow_tags = True
 
@@ -41,7 +41,7 @@ class Answer(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.member.username
+        return self.user.username
 
 
 class TicketCategory(models.Model):

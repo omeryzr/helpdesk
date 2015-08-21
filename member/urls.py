@@ -1,7 +1,7 @@
 __author__ = 'lyk-py'
 from django.conf.urls import patterns, url, include
 
-from member.views import (index, hakkimizda, register, hata, profil, tickets, logout, editprofil, newticket)
+from member.views import (index, hakkimizda, register, hata, profil, tickets, logout, editprofil, newticket, ticketdetails)
 
 
 urlpatterns = patterns('',
@@ -14,4 +14,5 @@ urlpatterns = patterns('',
                        url(r'^logout/$', logout),
                        url(r'^editprofil/$', editprofil),
                        url(r'^new-ticket/$', newticket),
+                       url(r'^ticketdetails/(?P<ticket_id>[0-9]+)/$', ticketdetails, name='ticket-details'),
                        )

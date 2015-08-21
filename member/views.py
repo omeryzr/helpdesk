@@ -34,6 +34,12 @@ def tickets(request):
     return HttpResponseRedirect('/login')
 
 
+def ticketdetails(request, ticket_id):
+    ticket = Ticket.objects.get(pk=ticket_id)
+    ticket_answers = Answer.objects.filter(ticket_id=ticket_id)
+    return render(request, "ticket-details.html", locals())
+
+
 def profil(request):
     return render_to_response('profil.html', context_instance=RequestContext(request))
 
